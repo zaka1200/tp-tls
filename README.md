@@ -3,14 +3,34 @@
 ## Analyse textuelle
 
 Analyse du certificat **godard.pem** :
+
 Le certificat a été signé par GEANT Personal CA 4
+
 ![image](https://github.com/user-attachments/assets/50b3e322-6ee0-46d9-8540-eb0d84ec0cde)
 
-![image](https://github.com/user-attachments/assets/fe4893d9-a45c-4547-854d-0d697af0625a)
+chaque certificat est entre les balises -----BEGIN CERTIFICATE----- et -----END CERTIFICATE-----
+
+## Certificats et le Certificat de Votre Enseignant 
+
+```cmd
+openssl x509 -text -in godard1.pem
+```
 
 ![image](https://github.com/user-attachments/assets/82bc276a-7ee5-4e66-bbf6-073e4ebada16)
 
+```cmd
+openssl x509 -text -in geant.pem
+```
+
 ![image](https://github.com/user-attachments/assets/c656ae6d-b147-4648-9d4c-e280f7b5aea0)
+
+```cmd
+openssl verify -CAfile geant.pem -purpose any godard1.pem
+```
+
+![image](https://github.com/user-attachments/assets/fe4893d9-a45c-4547-854d-0d697af0625a)
+
+
 
 ![image](https://github.com/user-attachments/assets/8c6c82cb-6eb3-4065-b7a9-7c6b227a8df0)
 
