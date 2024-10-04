@@ -72,3 +72,8 @@ openssl x509 -text -in z.tp.pem
 ```
 
 ![image](https://github.com/user-attachments/assets/787145c2-90bd-4acd-bd63-c09a4fe3e552)
+
+## Usage des Certificats
+
+1.  le QR code n’est qu’un support technique permettant de représenter des informations de manière lisible par des dispositifs électroniques .Un certificat Covid-19 est un document qui atteste d’une information officielle relative au statut sanitaire d'une personne, par exemple son statut vaccinal, un test négatif récent ou une guérison. Il est signé numériquement par une autorité certifiante, ce qui permet de garantir son authenticité et son intégrité.
+2.  
