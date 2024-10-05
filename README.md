@@ -129,3 +129,26 @@ Du côté client
 ![image](https://github.com/user-attachments/assets/a5734112-a333-4b10-9aef-8baa2950ba1d)
 
 la vérification de certificat est toujours désactivée
+
+## Authentification du serveur avec un certificat
+
+
+![image](https://github.com/user-attachments/assets/9631d388-1cc4-4b73-b280-70ba7dc93765)
+
+
+![image](https://github.com/user-attachments/assets/812e2c3e-ed91-47c4-b3e0-974f687fa599)
+
+## Analyse :
+
+1. Captures Réseaux avec Wireshark
+2. Lancement de Wireshark
+3. Filtrage des paquets SSL/TLS
+   ```c
+   tcp.port == 4433
+   ```
+4. Exécution de la connexion SSL
+
+![image](https://github.com/user-attachments/assets/d2d304d5-4240-4760-ad6d-71fb782216e0)
+
+
+Lors de l'analyse des connexions SSL/TLS avec Wireshark, il est possible d'observer les échanges de paquets entre le client et le serveur. Les paquets SSL/TLS sont généralement identifiés par le port utilisé (comme 4433 dans notre cas). En examinant les détails de ces paquets, on peut remarquer le processus d'établissement de la connexion sécurisé, incluant la négociation des ciphers et l'échange des certificats. Les messages "Client Hello" et "Server Hello" illustrent cette négociation, indiquant les suites de chiffrement supportées. De plus, les paquets contenant les certificats permettent de vérifier si le certificat du serveur est valide et s'il est reconnu par le client. L'observation des paquets peut également révéler des problèmes potentiels, tels que des échecs de vérification de certificat, indiqués par des alertes ou des messages d'erreur.
