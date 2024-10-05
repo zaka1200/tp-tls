@@ -38,6 +38,35 @@ cela signifie que la clé publique de notre enseignant est authentique, car elle
 
 ![image](https://github.com/user-attachments/assets/fe4893d9-a45c-4547-854d-0d697af0625a)
 
+L'analyse des certificats révèle une chaîne de confiance classique :
+
+- godard.pem a été signé par GEANT.
+- geant.pem a été signé par Research and Education Trust.
+Cela signifie que Research and Education Trust agit en tant qu'autorité de certification racine, ayant émis un certificat pour GEANT, qui a ensuite délivré un certificat pour Godard. Cette hiérarchie assure que le certificat de Godard est valide tant que tous les certificats supérieurs de la chaîne (à savoir GEANT et Research and Education Trust) sont considérés comme fiables. En conclusion, la clé publique de notre enseignant peut être considérée comme authentique.
+
+
+## Certs :
+
+Analyse des Certificats
+godard.ca.pem :
+
+- Il s'agit d'un certificat auto-signé appartenant à "Emmanuel Godard CA", qui fonctionne en tant que certificat d'autorité (CA).
+- Ce certificat est destiné à signer d'autres certificats dans le cadre du travail pratique (TP).
+- Sa période de validité s'étend du 26 septembre 2024 au 26 septembre 2025.
+- Il contient une clé publique RSA de 3072 bits.
+
+godard-tp.ca.pem :
+
+- Ce certificat est émis par l'autorité de certification godard.ca.pem. Il peut servir de sous-autorité pour signer d'autres certificats.
+
+godard-tp.pem :
+
+- Ce certificat représente un certificat d'utilisateur ou de serveur pour le TP, émis par godard-tp.ca.pem. On peut considérer que godard-tp.ca.pem a généré un certificat nommé godard-tp.pem et l'a ensuite signé avec sa propre clé privée.
+
+La clé utilisée par l'enseignant n'est pas entièrement authentique, car le certificat godard-tp.pem a été signé par godard-tp.ca.pem, qui n'a pas l'autorité de signer des certificats. Seul godard.ca.pem, une autorité de certification de confiance, est habilité à le faire dans ce contexte.
+
+Concernant l'utilisation du certificat racine geant.pem, il ne peut pas être employé car il représente une autorité de certification publique, destinée à des usages spécifiques et contrôlés
+
 ## Certificats des étudiants :
 
 Pour générer une clé et créer une requête de signature pour notre certificat, on commence par Créer une paire de clés privée et publique
@@ -45,6 +74,7 @@ Pour générer une clé et créer une requête de signature pour notre certifica
 ```cmd
 openssl genpkey -algorithm RSA -out z.key.pem -pkeyopt rsa_keygen_bits:2048
 ```
+
 ![image](https://github.com/user-attachments/assets/8c6c82cb-6eb3-4065-b7a9-7c6b227a8df0)
 
 maintenant on peux lire notre cle privee :
