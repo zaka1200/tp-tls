@@ -63,6 +63,9 @@ godard-tp.pem :
 
 - Ce certificat représente un certificat d'utilisateur ou de serveur pour le TP, émis par godard-tp.ca.pem. On peut considérer que godard-tp.ca.pem a généré un certificat nommé godard-tp.pem et l'a ensuite signé avec sa propre clé privée.
 
+
+![image](https://github.com/user-attachments/assets/11d925a1-e1c0-4edd-9b3a-bc220164201d)
+
 La clé utilisée par l'enseignant n'est pas entièrement authentique, car le certificat godard-tp.pem a été signé par godard-tp.ca.pem, qui n'a pas l'autorité de signer des certificats. Seul godard.ca.pem, une autorité de certification de confiance, est habilité à le faire dans ce contexte.
 
 Concernant l'utilisation du certificat racine geant.pem, il ne peut pas être employé car il représente une autorité de certification publique, destinée à des usages spécifiques et contrôlés
